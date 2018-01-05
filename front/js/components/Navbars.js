@@ -48,7 +48,7 @@ export default class NavbarInstance extends Component {
               {' '}
               <Button type="submit">Submit</Button>
             </Navbar.Form>
-            <NavItem eventKey={4} onClick={this.onClickHandler} className="logout">Log Out</NavItem>
+            <NavItem eventKey={4} onClick={this.constructor.onClickHandler} className="logout">Log Out</NavItem>
           </Nav>
         </Navbar.Collapse>
       </Navbar>

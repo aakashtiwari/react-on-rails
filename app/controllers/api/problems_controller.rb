@@ -9,7 +9,12 @@ class Api::ProblemsController < ApplicationController
   end
 
   def create
-  	Problem.create(problem_params)
+  	problem = Problem.create(problem_params)
+    unless problem.nil?
+      render json: { problem: problem }
+    else
+      render json: { error: problem.errors }, status: 400
+    end
   end
 
   def show
@@ -19,7 +24,6 @@ class Api::ProblemsController < ApplicationController
 		else
 			render json: { error: problem.errors }, status: 400
 		end
-
   end
 
   private

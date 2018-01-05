@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { Redirect } from 'react-router';
 import getLogger from '../util/logger';
 
 const log = getLogger('ProblemFormComponent');
@@ -44,7 +45,8 @@ export default class ProblemForm extends React.Component {
       problem: this.state,
     })
       .then(() => {
-        this.setState({ name: event.target.value });
+        debugger;
+        <Redirect push to="/"/>
       })
       .catch((error) => {
         log.error(error);
