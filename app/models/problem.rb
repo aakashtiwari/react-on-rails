@@ -1,5 +1,8 @@
 class Problem < ApplicationRecord
-	include Workflow
+	has_many :taggings
+  has_many :tags, through: :taggings
+
+  include Workflow
   workflow do
     state :new do
       event :submit, :transitions_to => :awaiting_review
@@ -14,4 +17,16 @@ class Problem < ApplicationRecord
     state :accepted
     state :rejected
   end
+
+
+  def all_tags=(names)
+    self.tags = names.split(",").map do |name|
+        Tag.where(name: name.strip).first_or_create!
+    end
+  end
+
+  def all_tags
+    self.tags.map(&:name).join(", ")
+  end
+
 end

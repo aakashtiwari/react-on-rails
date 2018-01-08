@@ -45,8 +45,7 @@ export default class ProblemForm extends React.Component {
       problem: this.state,
     })
       .then(() => {
-        debugger;
-        <Redirect push to="/"/>
+        window.location.href = '/';
       })
       .catch((error) => {
         log.error(error);
