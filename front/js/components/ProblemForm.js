@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
-import { Redirect } from 'react-router';
 import getLogger from '../util/logger';
+import TagComponent from './TagComponent';
 
 const log = getLogger('ProblemFormComponent');
 
@@ -87,6 +87,7 @@ export default class ProblemForm extends React.Component {
               </div>
             </div>
           </div>
+          <TagComponent />
           <button type="submit" className="btn btn-primary" value="Submit">Submit</button>
         </form>
       </div>
