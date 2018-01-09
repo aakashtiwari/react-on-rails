@@ -1,7 +1,6 @@
 import React from 'react';
 import axios from 'axios';
 import getLogger from '../util/logger';
-import TagComponent from './TagComponent';
 
 const log = getLogger('ProblemFormComponent');
 
@@ -12,8 +11,10 @@ export default class ProblemForm extends React.Component {
       name: '',
       description: '',
       explanation: '',
+      selectedTags: [],
     };
-
+    this.tags = ['Data Structure', 'Strings', 'Sorting', 'Search', 'Graph Theory', 'Greedy', 'Dynamic Programming',
+      'Constructive Algorithms', 'Bit Manipulation', 'Recursion', 'Game Theory', 'NP Complete'];
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -87,7 +88,18 @@ export default class ProblemForm extends React.Component {
               </div>
             </div>
           </div>
-          <TagComponent />
+          <div className="row">
+            <div className="col-md-6">
+              {this.tags.map(tag => (
+                <div className="tag-checkbox">
+                  <label htmlFor={tag}>
+                    <input type="checkbox" className="form-control" id={tag} value={this.state.name} onChange={this.handleTag} />
+                    {tag}
+                  </label>
+                </div>
+              ))}
+            </div>
+          </div>
           <button type="submit" className="btn btn-primary" value="Submit">Submit</button>
         </form>
       </div>
