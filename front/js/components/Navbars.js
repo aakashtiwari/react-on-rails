@@ -10,6 +10,7 @@ import getLogger from '../util/logger';
 const log = getLogger('NavBarComponent');
 
 export default class NavbarInstance extends Component {
+  
   static onClickHandler() {
     axios.get('/logout')
       .then(() => {
@@ -32,7 +33,7 @@ export default class NavbarInstance extends Component {
         <Navbar.Collapse>
           <Nav>
             <NavItem eventKey={1} href="/form">Entry</NavItem>
-            <NavDropdown eventKey={3} title="Category" id="basic-nav-dropdown">
+            <NavDropdown eventKey={3} title="Category" id="basic-nav-dropdown" onchange={}>
               <MenuItem eventKey={3.1}>Data Structure</MenuItem>
               <MenuItem eventKey={3.2}>Dynamic Programming</MenuItem>
               <MenuItem eventKey={3.3}>Backtracking</MenuItem>

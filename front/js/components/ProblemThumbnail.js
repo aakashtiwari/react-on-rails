@@ -35,7 +35,7 @@ export default class ProblemThumbnail extends React.Component {
               <p>{problem.description}</p>
             </div>
           </a>
-        ))};
+        ))}
       </div>
     );
   }

@@ -11,12 +11,13 @@ export default class ProblemForm extends React.Component {
       name: '',
       description: '',
       explanation: '',
-      selectedTags: [],
+      all_tags: [],
     };
     this.tags = ['Data Structure', 'Strings', 'Sorting', 'Search', 'Graph Theory', 'Greedy', 'Dynamic Programming',
       'Constructive Algorithms', 'Bit Manipulation', 'Recursion', 'Game Theory', 'NP Complete'];
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleTagging = this.handleTagging.bind(this);
   }
 
   handleChange(event) {
@@ -51,6 +52,18 @@ export default class ProblemForm extends React.Component {
       .catch((error) => {
         log.error(error);
       });
+  }
+
+  handleTagging(event){
+    let _tag = event.currentTarget.id;
+    if(event.currentTarget.checked){
+      let _stags = this.state.all_tags.slice();
+      _stags.push(_tag);
+      this.setState({ all_tags: _stags });
+    } else {
+      let _stags = this.state.all_tags.filter(e => e !== _tag);
+      this.setState({ all_tags: _stags});
+    }
   }
 
   render() {
@@ -93,7 +106,7 @@ export default class ProblemForm extends React.Component {
               {this.tags.map(tag => (
                 <div className="tag-checkbox">
                   <label htmlFor={tag}>
-                    <input type="checkbox" className="form-control" id={tag} value={this.state.name} onChange={this.handleTag} />
+                    <input type="checkbox" className="form-control" id={tag} onChange={this.handleTagging} />
                     {tag}
                   </label>
                 </div>

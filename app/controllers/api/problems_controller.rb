@@ -28,6 +28,6 @@ class Api::ProblemsController < ApplicationController
 
   private
   def problem_params
-  	params.required(:problem).permit(:name, :description, :explanation)
+  	params.required(:problem).permit(:name, :description, :explanation, all_tags: [])
   end
 end
